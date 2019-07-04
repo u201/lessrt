@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scene version="0.5.0">
+	<integrator type="path">
+		<float name="subSceneXSize" value="100"/>
+		<float name="subSceneZSize" value="100"/>
+		<boolean name="strictNormals" value="true"/>
+		<integer name="maxDepth" value="200"/>
+		<integer name="rrDepth" value="5"/>
+		<float name="NoDataValue" value="-1"/>
+		<integer name="RepetitiveScene" value="100"/>
+		<spectrum name="wavelengths" value="600,900"/>
+		<boolean name="hasFourComponentProduct" value="false"/>
+		<boolean name="hideEmitters" value="true"/>
+		<boolean name="SceneVirtualPlane" value="false"/>
+	</integrator>
+	<sensor type="orthographic">
+		<float name="nearClip" value="0.0000001"/>
+		<float name="farClip" value="10000000000"/>
+		<transform name="toWorld">
+			<scale x="50.0" y="50.0"/>
+			<lookat origin="0.0,3000.0,0.0" target="0,0,0" up="0.00000,0,1.00000"/>
+		</transform>
+		<float name="aspect" value="1.0"/>
+		<sampler type="halton">
+			<integer name="sampleCount" value="128"/>
+		</sampler>
+		<film type="mfilm">
+			<string name="fileFormat" value="numpy"/>
+			<string name="pixelFormat" value="spectrum"/>
+			<rfilter type="box">
+				<float name="radius" value="0.4"/>
+			</rfilter>
+			<integer name="width" value="100"/>
+			<integer name="height" value="100"/>
+		</film>
+	</sensor>
+	<emitter type="directional">
+		<vector name="direction" x="0.7071067811865476" y="-0.7071067811865476" z="0.0"/>
+		<spectrum name="irradiance" value="1.757028078542302,0.8722858874639848"/>
+	</emitter>
+	<include filename="terrain.xml"/>
+	<include filename="object.xml"/>
+	<include filename="forest_0.xml"/>
+</scene>

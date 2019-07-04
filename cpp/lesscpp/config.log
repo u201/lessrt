@@ -1,0 +1,186 @@
+file C:\DATA\LessProject\cpp\lesscpp\build\SConscript.configure,line 137:
+	Configure(confdir = .sconf_temp)
+scons: Configure: Checking for cl ...
+scons: Configure: ".sconf_temp\conftest_0.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp\conftest_0.cpp <-
+  |  |#include <sstream>
+  |  | int main(int argc, char **argv) {
+  |  | std::ostringstream oss;
+  |  | return 0;
+  |  | }
+  |
+scons: Configure: ".sconf_temp\conftest_0.obj" is up to date.
+scons: Configure: The original builder output was:
+  |cl /Fo.sconf_temp\conftest_0.obj /c .sconf_temp\conftest_0.cpp /nologo /Oi /Ot /Oy /Ob1 /Gs /GF /Gy /fp:fast /D WIN32 /D WIN64 /W3 /EHsc /GS- /GL /MD /D MTS_DEBUG /D DOUBLE_PRECISION /D _CONSOLE /D NDEBUG /D OPENEXR_DLL /openmp /nologo /D GLEW_MX /Idependencies\include\openexr /Idependencies\include\openexr /Iinclude /Idependencies\include
+  |
+scons: Configure: ".sconf_temp\conftest_0.exe" is up to date.
+scons: Configure: The original builder output was:
+  |link /nologo /SUBSYSTEM:CONSOLE /MACHINE:X64 /FIXED:NO /OPT:REF /OPT:ICF /LTCG /NODEFAULTLIB:LIBCMT /MANIFEST /OUT:.sconf_temp\conftest_0.exe /LIBPATH:dependencies\lib boost_system-vc141-mt-1_65_1.lib boost_filesystem-vc141-mt-1_65_1.lib boost_thread-vc141-mt-1_65_1.lib msvcrt.lib ws2_32.lib Half.lib zlib.lib .sconf_temp\conftest_0.obj
+  |
+scons: Configure: (cached) yes
+
+scons: Configure: Checking for C header file png.h... 
+scons: Configure: ".sconf_temp\conftest_1.c" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp\conftest_1.c <-
+  |  |
+  |  |#include "png.h"
+  |  |
+  |  |
+  |
+scons: Configure: ".sconf_temp\conftest_1.obj" is up to date.
+scons: Configure: The original builder output was:
+  |cl /Fo.sconf_temp\conftest_1.obj /c .sconf_temp\conftest_1.c /nologo /D GLEW_MX /Idependencies\include\openexr /Idependencies\include\openexr /Iinclude /Idependencies\include
+  |
+scons: Configure: (cached) yes
+
+scons: Configure: Checking for C header file jpeglib.h... 
+scons: Configure: ".sconf_temp\conftest_2.c" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp\conftest_2.c <-
+  |  |#include "stdio.h"
+  |  |
+  |  |#include "jpeglib.h"
+  |  |
+  |  |
+  |
+scons: Configure: ".sconf_temp\conftest_2.obj" is up to date.
+scons: Configure: The original builder output was:
+  |cl /Fo.sconf_temp\conftest_2.obj /c .sconf_temp\conftest_2.c /nologo /D GLEW_MX /DMTS_HAS_LIBPNG=1 /Idependencies\include\openexr /Idependencies\include\openexr /Iinclude /Idependencies\include
+  |
+scons: Configure: (cached) yes
+
+scons: Configure: Checking for C++ header file ImfRgba.h... 
+scons: Configure: ".sconf_temp\conftest_3.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp\conftest_3.cpp <-
+  |  |
+  |  |#include "ImfRgba.h"
+  |  |
+  |  |
+  |
+scons: Configure: ".sconf_temp\conftest_3.obj" is up to date.
+scons: Configure: The original builder output was:
+  |cl /Fo.sconf_temp\conftest_3.obj /c .sconf_temp\conftest_3.cpp /nologo /Oi /Ot /Oy /Ob1 /Gs /GF /Gy /fp:fast /D WIN32 /D WIN64 /W3 /EHsc /GS- /GL /MD /D MTS_DEBUG /D DOUBLE_PRECISION /D _CONSOLE /D NDEBUG /D OPENEXR_DLL /openmp /nologo /D GLEW_MX /DMTS_HAS_LIBPNG=1 /DMTS_HAS_LIBJPEG=1 /Idependencies\include\openexr /Idependencies\include\openexr /Iinclude /Idependencies\include
+  |
+scons: Configure: (cached) yes
+
+scons: Configure: Checking for C++ header file xercesc/dom/DOMLSParser.hpp... 
+scons: Configure: ".sconf_temp\conftest_4.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp\conftest_4.cpp <-
+  |  |
+  |  |#include "xercesc/dom/DOMLSParser.hpp"
+  |  |
+  |  |
+  |
+scons: Configure: ".sconf_temp\conftest_4.obj" is up to date.
+scons: Configure: The original builder output was:
+  |cl /Fo.sconf_temp\conftest_4.obj /c .sconf_temp\conftest_4.cpp /nologo /Oi /Ot /Oy /Ob1 /Gs /GF /Gy /fp:fast /D WIN32 /D WIN64 /W3 /EHsc /GS- /GL /MD /D MTS_DEBUG /D DOUBLE_PRECISION /D _CONSOLE /D NDEBUG /D OPENEXR_DLL /openmp /nologo /D GLEW_MX /DMTS_HAS_LIBPNG=1 /DMTS_HAS_LIBJPEG=1 /DMTS_HAS_OPENEXR=1 /Idependencies\include\openexr /Idependencies\include\openexr /Iinclude /Idependencies\include
+  |
+scons: Configure: (cached) yes
+
+scons: Configure: Checking for C++ header file dae.h... 
+scons: Configure: ".sconf_temp\conftest_5.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp\conftest_5.cpp <-
+  |  |
+  |  |#include "dae.h"
+  |  |
+  |  |
+  |
+scons: Configure: Building ".sconf_temp\conftest_5.obj" failed in a previous run and all its sources are up to date.
+scons: Configure: The original builder output was:
+  |cl /Fo.sconf_temp\conftest_5.obj /c .sconf_temp\conftest_5.cpp /nologo /Oi /Ot /Oy /Ob1 /Gs /GF /Gy /fp:fast /D WIN32 /D WIN64 /W3 /EHsc /GS- /GL /MD /D MTS_DEBUG /D DOUBLE_PRECISION /D _CONSOLE /D NDEBUG /D OPENEXR_DLL /openmp /nologo /D GLEW_MX /DMTS_HAS_LIBPNG=1 /DMTS_HAS_LIBJPEG=1 /DMTS_HAS_OPENEXR=1 /Idependencies\include\openexr /Idependencies\include\openexr /Iinclude /Idependencies\include
+  |
+scons: Configure: (cached) no
+
+scons: Configure: Checking for C++ header file pyconfig.h... 
+scons: Configure: ".sconf_temp\conftest_6.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp\conftest_6.cpp <-
+  |  |
+  |  |#include "pyconfig.h"
+  |  |
+  |  |
+  |
+scons: Configure: ".sconf_temp\conftest_6.obj" is up to date.
+scons: Configure: The original builder output was:
+  |cl /Fo.sconf_temp\conftest_6.obj /c .sconf_temp\conftest_6.cpp /nologo /Oi /Ot /Oy /Ob1 /Gs /GF /Gy /fp:fast /D WIN32 /D WIN64 /W3 /EHsc /GS- /GL /MD /D MTS_DEBUG /D DOUBLE_PRECISION /D _CONSOLE /D NDEBUG /D OPENEXR_DLL /openmp /nologo /D GLEW_MX /DMTS_HAS_LIBPNG=1 /DMTS_HAS_LIBJPEG=1 /DMTS_HAS_OPENEXR=1 /Idependencies\include\openexr /Idependencies\include\openexr /Iinclude /Idependencies\include /Idependencies\include\python27
+  |
+scons: Configure: (cached) yes
+
+scons: Configure: Checking for C++ header file pyconfig.h... 
+scons: Configure: ".sconf_temp\conftest_7.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp\conftest_7.cpp <-
+  |  |
+  |  |#include "pyconfig.h"
+  |  |
+  |  |
+  |
+scons: Configure: ".sconf_temp\conftest_7.obj" is up to date.
+scons: Configure: The original builder output was:
+  |cl /Fo.sconf_temp\conftest_7.obj /c .sconf_temp\conftest_7.cpp /nologo /Oi /Ot /Oy /Ob1 /Gs /GF /Gy /fp:fast /D WIN32 /D WIN64 /W3 /EHsc /GS- /GL /MD /D MTS_DEBUG /D DOUBLE_PRECISION /D _CONSOLE /D NDEBUG /D OPENEXR_DLL /openmp /nologo /D GLEW_MX /DMTS_HAS_LIBPNG=1 /DMTS_HAS_LIBJPEG=1 /DMTS_HAS_OPENEXR=1 /Idependencies\include\openexr /Idependencies\include\openexr /Iinclude /Idependencies\include /Idependencies\include\python36
+  |
+scons: Configure: (cached) yes
+
+scons: Configure: Checking for C++ header file boost/version.hpp... 
+scons: Configure: ".sconf_temp\conftest_8.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp\conftest_8.cpp <-
+  |  |
+  |  |#include "boost/version.hpp"
+  |  |
+  |  |
+  |
+scons: Configure: ".sconf_temp\conftest_8.obj" is up to date.
+scons: Configure: The original builder output was:
+  |cl /Fo.sconf_temp\conftest_8.obj /c .sconf_temp\conftest_8.cpp /nologo /Oi /Ot /Oy /Ob1 /Gs /GF /Gy /fp:fast /D WIN32 /D WIN64 /W3 /EHsc /GS- /GL /MD /D MTS_DEBUG /D DOUBLE_PRECISION /D _CONSOLE /D NDEBUG /D OPENEXR_DLL /openmp /nologo /D GLEW_MX /DMTS_HAS_LIBPNG=1 /DMTS_HAS_LIBJPEG=1 /DMTS_HAS_OPENEXR=1 /Idependencies\include\openexr /Idependencies\include\openexr /Iinclude /Idependencies\include
+  |
+scons: Configure: (cached) yes
+
+scons: Configure: ".sconf_temp\conftest_9.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp\conftest_9.cpp <-
+  |  |#include <boost/version.hpp>
+  |  |#if BOOST_VERSION < 104400
+  |  |#error Boost is outdated!
+  |  |#endif
+  |
+scons: Configure: ".sconf_temp\conftest_9.obj" is up to date.
+scons: Configure: The original builder output was:
+  |cl /Fo.sconf_temp\conftest_9.obj /c .sconf_temp\conftest_9.cpp /nologo /Oi /Ot /Oy /Ob1 /Gs /GF /Gy /fp:fast /D WIN32 /D WIN64 /W3 /EHsc /GS- /GL /MD /D MTS_DEBUG /D DOUBLE_PRECISION /D _CONSOLE /D NDEBUG /D OPENEXR_DLL /openmp /nologo /D GLEW_MX /DMTS_HAS_LIBPNG=1 /DMTS_HAS_LIBJPEG=1 /DMTS_HAS_OPENEXR=1 /Idependencies\include\openexr /Idependencies\include\openexr /Iinclude /Idependencies\include
+  |
+scons: Configure: Checking for C++ header file Eigen/Core... 
+scons: Configure: ".sconf_temp\conftest_10.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp\conftest_10.cpp <-
+  |  |
+  |  |#include "Eigen/Core"
+  |  |
+  |  |
+  |
+scons: Configure: ".sconf_temp\conftest_10.obj" is up to date.
+scons: Configure: The original builder output was:
+  |cl /Fo.sconf_temp\conftest_10.obj /c .sconf_temp\conftest_10.cpp /nologo /Oi /Ot /Oy /Ob1 /Gs /GF /Gy /fp:fast /D WIN32 /D WIN64 /W3 /EHsc /GS- /GL /MD /D MTS_DEBUG /D DOUBLE_PRECISION /D _CONSOLE /D NDEBUG /D OPENEXR_DLL /openmp /nologo /D GLEW_MX /DMTS_HAS_LIBPNG=1 /DMTS_HAS_LIBJPEG=1 /DMTS_HAS_OPENEXR=1 /Idependencies\include\openexr /Idependencies\include\openexr /Iinclude /Idependencies\include
+  |
+scons: Configure: (cached) yes
+
+scons: Configure: Checking for C++ header file fftw3.h... 
+scons: Configure: ".sconf_temp\conftest_11.cpp" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp\conftest_11.cpp <-
+  |  |
+  |  |#include "fftw3.h"
+  |  |
+  |  |
+  |
+scons: Configure: ".sconf_temp\conftest_11.obj" is up to date.
+scons: Configure: The original builder output was:
+  |cl /Fo.sconf_temp\conftest_11.obj /c .sconf_temp\conftest_11.cpp /nologo /Oi /Ot /Oy /Ob1 /Gs /GF /Gy /fp:fast /D WIN32 /D WIN64 /W3 /EHsc /GS- /GL /MD /D MTS_DEBUG /D DOUBLE_PRECISION /D _CONSOLE /D NDEBUG /D OPENEXR_DLL /openmp /nologo /D GLEW_MX /DMTS_HAS_LIBPNG=1 /DMTS_HAS_LIBJPEG=1 /DMTS_HAS_OPENEXR=1 /Idependencies\include\openexr /Idependencies\include\openexr /Iinclude /Idependencies\include
+  |
+scons: Configure: (cached) yes
+
+

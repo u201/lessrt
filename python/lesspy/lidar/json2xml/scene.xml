@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<scene version="0.5.0">
+	<integrator type="MonoPulse">
+		<integer name="axialDivision" value="100"/>
+		<integer name="maxOrder" value="2"/>
+		<float name="fractionAtRadius" value="0.368"/>
+		<float name="footprintHalfAngle" value="0.0012"/>
+		<float name="halfFov" value="0.0015"/>
+		<float name="pulseEnergy" value="1"/>
+		<float name="acquisitionPeriod" value="1"/>
+		<float name="sensorArea" value="0.1"/>
+		<float name="halfPulseDurationAtHalfPeak" value="2"/>
+		<float name="halfDurationNumberOfSigma" value="3"/>
+		<float name="x" value="20"/>
+		<float name="y" value="20"/>
+		<float name="z" value="100"/>
+		<float name="zenith" value="0"/>
+		<float name="azimuth" value="0"/>
+		<float name="minRange" value="90"/>
+		<float name="maxRange" value="110"/>
+	</integrator>
+</scene>

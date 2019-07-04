@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" ?>
+<scene version="0.5.0">
+	<bsdf id="birch_leaf_green" type="mixturebsdf">
+		<boolean name="ensureEnergyConservation" value="false"/>
+		<string name="weights" value="1,1"/>
+		<bsdf type="twosided">
+			<bsdf type="diffuse">
+				<spectrum name="reflectance" value="0.0586,0.4715"/>
+			</bsdf>
+			<bsdf type="diffuse">
+				<spectrum name="reflectance" value="0.0586,0.4715"/>
+			</bsdf>
+		</bsdf>
+		<bsdf type="difftrans">
+			<spectrum name="transmittance" value="0.0563,0.4860"/>
+		</bsdf>
+	</bsdf>
+	<bsdf id="birch_branch" type="diffuse">
+		<spectrum name="reflectance" value="0.1053,0.4756"/>
+	</bsdf>
+	<shape id="tree" type="shapegroup">
+		<shape id="tree_leaves" type="serialized">
+			<string name="filename" value="tree_leaves.serialized"/>
+			<ref id="birch_leaf_green"/>
+			<boolean name="faceNormals" value="true"/>
+		</shape>
+		<shape id="tree_stem_branch" type="serialized">
+			<string name="filename" value="tree_stem_branch.serialized"/>
+			<ref id="birch_branch"/>
+			<boolean name="faceNormals" value="true"/>
+		</shape>
+	</shape>
+	<shape id="house" type="shapegroup">
+		<shape id="house_Grass" type="serialized">
+			<string name="filename" value="house_Grass.serialized"/>
+			<ref id="birch_branch"/>
+			<boolean name="faceNormals" value="true"/>
+		</shape>
+	</shape>
+</scene>

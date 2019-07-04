@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
@@ -47,7 +48,9 @@ public class PyLauncher extends Thread{
 	public enum Operation {
 	    NEW_SIM, GENERATE_V_I, GENERATE_3D_MODEL,
 	    RUN_LESS,RUN_ALL,SAVE_AS,RUN_BATCH,RUN_BRF,RUN_BT,
-	    RUN_TREE_DETECTION, GENERATE_TERRAIN, GENERATE_TREEHEIGHT_FOR_3DVIWER
+	    RUN_TREE_DETECTION, GENERATE_TERRAIN, GENERATE_TREEHEIGHT_FOR_3DVIWER,
+	    
+	    RUN_WAVEFORM,
 	}
 	
 	public static String getPyexe(){
@@ -197,6 +200,12 @@ public class PyLauncher extends Thread{
 			case GENERATE_TREEHEIGHT_FOR_3DVIWER:
 				generate_3D_pos_of_objects();
 				break;
+				
+			case RUN_WAVEFORM:
+				runWaveform();
+				break;
+				
+				
 			default:
 				break;
 			}
@@ -455,6 +464,20 @@ public class PyLauncher extends Thread{
 		Platform.runLater(() -> this.mwController.projManager.treePosFromCHM_PostProcessing());
 		this.mwController.StopDrawTree = false;
 		Platform.runLater(() -> this.mwController.reDrawAll());
+	}
+	
+	
+	public void runWaveform() {
+		this.isRunningLess = true;
+//		
+		// TODO
+		System.out.println("runWaveform start");
+		Path script_path = Paths.get(PyLauncher.getScriptsPath("lidarless")/*, "sleepseconds.py"*/);
+		System.out.println(script_path);
+		ProcessBuilder pd=new ProcessBuilder(PyLauncher.getPyexe(), script_path.toString());
+		runProcess(pd);
+		System.out.println("runWaveform over");
+		this.isRunningLess = false;
 	}
 	
 	/**
