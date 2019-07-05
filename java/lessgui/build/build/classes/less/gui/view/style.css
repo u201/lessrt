@@ -1,0 +1,33 @@
+#positionTable .table-column {
+  -fx-alignment: CENTER;
+}
+
+BorderPane{
+	-fx-font-size:12px;
+}
+
+#canvasScrollPane:focused {
+    -fx-background-insets: 0;
+}
+
+/*
+    The tab bar
+*/
+
+.tab-header-background {
+    -fx-background-color: #eee;
+}
+
+.scroll-pane {
+    -fx-background-color:transparent;
+}
+
+.chart {
+    -fx-padding: 10px;
+    -fx-background-color: #fff;
+    -fx-legend-visible: true;
+}
+
+.chart-plot-background {
+    -fx-background-color:transparent;
+}

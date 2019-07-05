@@ -1,0 +1,15 @@
+eclipse.preferences.version=1
+encoding//build/build/src/less/gui/helper/PyLauncher.java=UTF-8
+encoding//build/build/src/less/gui/utils/Const.java=UTF-8
+encoding//build/build/src/less/gui/view/LessMainWindowController.java=UTF-8
+encoding//src/less/gui/display2D/DrawToolBarHelper.java=UTF-8
+encoding//src/less/gui/display3D/Display3DController.java=UTF-8
+encoding//src/less/gui/display3D/DrawElement.java=UTF-8
+encoding//src/less/gui/helper/LAICaculatorThread.java=UTF-8
+encoding//src/less/gui/helper/PyLauncher.java=UTF-8
+encoding//src/less/gui/usercontrol/HierarchyData.java=UTF-8
+encoding//src/less/gui/utils/Const.java=UTF-8
+encoding//src/less/gui/utils/DBReader.java=UTF-8
+encoding//src/less/gui/view/LessMainWindowController.java=UTF-8
+encoding//src/less/gui/view/RunningOnClusterController.java=UTF-8
+encoding/<project>=UTF-8
