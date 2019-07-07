@@ -383,9 +383,8 @@ public:
 		const WaveformWorkResult *wr = static_cast<const WaveformWorkResult *>(result);
 
 		//cout << "processResult " << endl;
-		m_waveforms.resize(m_numOfPulses);
+		//m_waveforms.resize(m_numOfPulses);
 		addWaveform(wr);
-		//outputWaveformToOneFile();
 
 		//outputToFile(wr);
 	}
@@ -410,14 +409,14 @@ public:
 		m_v.push_back(d.y);
 		m_w.push_back(d.z);
 
-		m_numOfPulses++;
+		//m_numOfPulses++;
 	}
 
 	void outputToFile(const WaveformWorkResult *wr) {
 
 		std::string folderPath = m_scene->getDestinationFile().string();
 		std::ostringstream oss;
-		oss << folderPath << wr->m_i << ".txt";
+		oss << folderPath << "\\" << wr->m_i << ".txt";
 		std::string name = oss.str();	
 		std::ofstream fout(name);
 

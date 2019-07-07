@@ -25,7 +25,7 @@ if not os.path.exists('_scenefile/lidarbatch/'):
 
 
 # split lidarbatch
-N = 500
+N = 20000
 
 d = np.loadtxt('_scenefile/lidarbatch.txt')
 

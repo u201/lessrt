@@ -84,7 +84,9 @@ public:
 		ref<WaveformProcess> process = new WaveformProcess();
 		m_scene = static_cast<Scene *>(Scheduler::getInstance()->getResource(sceneResID));
 		configureProcess(process);
-		generatePulsesConfiguration(process);
+		int numOfPulses = generatePulsesConfiguration(process);
+		process->m_numOfPulses = numOfPulses;
+		process->m_waveforms.resize(process->m_numOfPulses);
 		process->bindResource("scene", sceneResID);	
 		scheduler->schedule(process);
 		m_process = process;
@@ -205,12 +207,12 @@ public:
 
 	}
 
-	void generatePulsesConfiguration(WaveformProcess *process) {
+	int generatePulsesConfiguration(WaveformProcess *process) {
 		//generateTestPulsesConfiguration(process);
-		batchAddPulsesFromFile(process);
+		return batchAddPulsesFromFile(process);
 	}
 
-	void batchAddPulsesFromFile(WaveformProcess *process) {
+	int batchAddPulsesFromFile(WaveformProcess *process) {
 		Float x;
 		Float y;
 		Float z;
@@ -260,6 +262,8 @@ public:
 		}
 		cout << "waveform batchAddPulsesFromFile Number of pulses = " << cnt << endl;
 		fin.close();
+
+		return cnt;
 	}
 
 	//void generateTestPulsesConfiguration(WaveformProcess *process) {
