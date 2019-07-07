@@ -174,6 +174,7 @@ public :
 	void prepare() {
 		Scene *scene = static_cast<Scene *>(getResource("scene"));
 		m_scene = new Scene(scene);
+		m_random = new Random();
 	}
 
 	void process(const WorkUnit *workUnit, WorkResult *workResult, const bool &stop) {
@@ -250,9 +251,9 @@ public :
 	}
 
 	Vector generateRandomDirection(const Intersection &its) {
-		ref<Random> random = new Random();
-		Float azimuth = 2.0 * M_PI * random->nextFloat();
-		Float zenith = acos(random->nextFloat());
+		
+		Float azimuth = 2.0 * M_PI * m_random->nextFloat();
+		Float zenith = acos(m_random->nextFloat());
 
 		Float x = sin(zenith) * cos(azimuth);
 		Float y = sin(zenith) * sin(azimuth);
@@ -311,6 +312,8 @@ public:
 
 	Point m_convergence;
 	Transform m_rotateRayTransform;
+
+	ref<Random> m_random;
 
 	// parameter
 	
@@ -433,12 +436,8 @@ public:
 		m_waveforms[wr->m_i] = std::vector<Spectrum>(wr->m_bin);
 	}
 	
-	void outputWaveformToOneFile() {
-
-
-
+	void outputWaveformToOneFile(std::string outName = "accumulation.txt") {
 		//cout << "outputWaveformToOneFile" << endl;
-
 		fs::path full_path(fs::initial_path());
 		full_path = fs::system_complete(fs::path(m_scene->getDestinationFile().string(), fs::native));
 		if (!fs::exists(full_path))
@@ -458,8 +457,9 @@ public:
 		//cout << folderPath + "\\waveform.txt" << endl;
 
 		//std::ofstream fout(folderPath + "\\waveform.txt");
+		std::ofstream fout(folderPath + "\\" + outName);
 
-		std::ostringstream oss;
+		//std::ostringstream oss;
 		
 		//cout << folderPath + "\\waveform.txt" << endl;
 
@@ -469,15 +469,15 @@ public:
 		for (auto w : m_waveforms) {
 			l = m_minRange * 2.0;
 			for (auto s : w) {
-				//fout << l << "\t" << s.eval(361) << "\t" << s.eval(596) << "\t" << endl;  // TODO
-				oss << l << "\t" << s.eval(361) << "\t" << s.eval(596) << "\t" << endl;  // TODO
+				fout << l << "\t" << s.eval(361) << "\t" << s.eval(596) << "\t" << endl;  // TODO
+				//oss << l << "\t" << s.eval(361) << "\t" << s.eval(596) << "\t" << endl;  // TODO
 				l += d;
 			}
 		}
 
-		//fout.close();
+		fout.close();
 		cout << "call writeFile" << endl;
-		writeFile(folderPath + "\\waveform.txt", oss);
+		//writeFile(folderPath + "\\" + outName, oss);
 	}
 
 	void writeFile(const std::string &filename, const std::ostringstream &oss) {

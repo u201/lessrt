@@ -6,7 +6,7 @@ from waveformToPointConvertor import WaveformToPointConvertor
 
 # pwd = simulation path
 batch_file_path = r'Parameters/_scenefile/lidarbatch.txt'
-record_file_path = r'Results/waveform/waveform.txt'
+record_file_path = r'Results/waveform/accumulation.txt'
 output_file_path = r'Results/waveform/cloud.txt'
 
 def toPoint(number_of_bins):

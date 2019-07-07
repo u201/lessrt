@@ -48,6 +48,7 @@ class LidarConfigToXmlConvertor(JsonToXmlConvertor):
 
 		# integrator.setAttribute('type', platform['type'].replace(' ', ''))
 		integrator.appendChild(self.create_name_value_node('string', 'type', platform['type']))
+		integrator.appendChild(self.create_name_value_node('string', 'batchFile', '$batchFile'))
 
 		# beam
 		beam_int_attributes = ['axialDivision', 'maxOrder']

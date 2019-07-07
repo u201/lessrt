@@ -200,7 +200,26 @@ public class RootLayoutController {
 	
 	@FXML
 	public void handleWaveformToPoint() {
-		oneFileWaveformToPoint();
+//		oneFileWaveformToPoint();
+		blockWaveformToPoint();
+	}
+	
+	public void blockWaveformToPoint() {
+		Path parameters_path = Paths.get(mainApp.mainApp.lessMainController.simulation_path);
+		Path script_path = Paths.get(PyLauncher.getScriptsPath("lidar/waveformToPoint/blockWaveformToPoint"));
+		try {		
+			
+			int numberOfBins = getNumberOfBins();
+			System.out.println("RootLayoutController.oneFileWaveformToPoint numberOfBins = " + numberOfBins);
+			
+			
+			ProcessBuilder pd=new ProcessBuilder(PyLauncher.getPyexe(), script_path.toString(), String.valueOf(numberOfBins));
+			pd.directory(new File(parameters_path.toString()));
+			pd.start();
+			System.out.println("Waveform to point");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void oneFileWaveformToPoint() {

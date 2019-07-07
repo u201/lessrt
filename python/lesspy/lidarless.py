@@ -29,5 +29,24 @@ def run_waveform():
 	log('INFO: ', command)
 	subprocess.call(command)
 
+def run_block():
+	currdir = os.path.split(os.path.realpath(__file__))[0]
+	rt_dir = os.path.join(currdir + '/bin/rt/' + current_rt_program)
+	os.environ['PATH'] = rt_dir + os.pathsep + os.environ['PATH']
+
+	excuable = 'lessrt'
+	xml_filename = 'lidar_main.xml'
+
+	scene_file_path = os.path.join(session.get_scenefile_path(), xml_filename)
+
+	distFile = os.path.join(session.get_output_dir(), "waveform")
+
+	for i in os.listdir(os.path.join(session.get_scenefile_path(), 'lidarbatch')):
+		# command = [excuable, '-D', 'batchFile=' + '"' + str(i) + '"', '-o', distFile, scene_file_path]
+		command = 'lessrt -D batchFile="' + i + '" -o ' + distFile + ' ' + scene_file_path
+		log('INFO: ', command)
+		subprocess.call(command)
+
 if __name__ == '__main__':
-	run_waveform()
+	# run_waveform()
+	run_block()

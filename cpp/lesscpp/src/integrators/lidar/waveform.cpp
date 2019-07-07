@@ -8,6 +8,8 @@
 
 MTS_NAMESPACE_BEGIN
 
+//int PULSE_NUMBER_PER_PROCESS = 20000;
+
 class Waveform : public Integrator {
 public:
 	Waveform(const Properties &props) : Integrator(props) {
@@ -82,18 +84,92 @@ public:
 		ref<WaveformProcess> process = new WaveformProcess();
 		m_scene = static_cast<Scene *>(Scheduler::getInstance()->getResource(sceneResID));
 		configureProcess(process);
+		generatePulsesConfiguration(process);
 		process->bindResource("scene", sceneResID);	
 		scheduler->schedule(process);
 		m_process = process;
 		cout << "waveform render process wait" << endl;
+
+		//cout << "print vector<vector<Spectrum> >" << endl;
+		//cout << process->m_waveforms[0][0].toString() << endl;
+
 		scheduler->wait(process);
-		process->outputWaveformToOneFile();
+		cout << "process->outputWaveformToOneFile(" << m_batchFile << ".txt)" << endl;
+		process->outputWaveformToOneFile(m_batchFile + ".txt");
 		m_process = NULL;
 
 		//std::cout << "Result: " << process->getOutput() << std::endl;
 
 		return process->getReturnStatus() == ParallelProcess::ESuccess;
 	}
+
+	//bool render(Scene *scene, RenderQueue *queue, const RenderJob *job, int sceneResID, int sensorResID, int samplerResID) {
+	//	Float x;
+	//	Float y;
+	//	Float z;
+	//	Float u;
+	//	Float v;
+	//	Float w;
+
+	//	ref<Scheduler> scheduler = Scheduler::getInstance();
+	//	m_scene = static_cast<Scene *>(Scheduler::getInstance()->getResource(sceneResID));
+
+	//	ref<WaveformProcess> process = new WaveformProcess();
+	//	process->bindResource("scene", sceneResID);
+	//	configureProcess(process);
+
+	//	std::string geoConfigFilename = getGeoConfigFilename();
+	//	std::ifstream fin(geoConfigFilename);
+	//	int block = 0;
+	//	while (fin >> x >> y >> z >> u >> v >> w) {
+	//		process->addGeometryConfiguration(x, y, z, u, v, w);
+
+	//		if (process->m_numOfPulses >= PULSE_NUMBER_PER_PROCESS) {
+	//			scheduler->schedule(process);
+	//			m_process = process;
+	//			cout << "waveform render process wait block " << block << endl;
+	//			scheduler->wait(process);
+
+	//			std::ostringstream oss;
+	//			oss << "accumulation_block_" << block << ".txt";
+	//			process->outputWaveformToOneFile(oss.str());
+	//			block++;
+
+	//			m_process = NULL;
+	//			if (process) {
+	//				delete process;
+	//			}
+	//			process = new WaveformProcess();
+	//			process->bindResource("scene", sceneResID);
+	//			configureProcess(process);
+	//		}
+	//	}
+	//	if (process->m_numOfPulses) {
+	//		scheduler->schedule(process);
+	//		m_process = process;
+	//		cout << "waveform render process wait" << endl;
+	//		scheduler->wait(process);
+	//		std::ostringstream oss;
+	//		oss << "accumulation_block_" << block << ".txt";
+	//		process->outputWaveformToOneFile(oss.str());
+	//		m_process = NULL;
+	//		if (process) {
+	//			delete process;
+	//		}
+	//	}
+	//	//return process->getReturnStatus() == ParallelProcess::ESuccess;
+	//	return true;
+	//}
+
+	//std::string getGeoConfigFilename() {
+	//	fs::path path = m_scene->getSourceFile();
+	//	path = path.parent_path() / "lidarbatch.txt";
+	//	if (!fs::exists(path)) {
+	//		cout << "No geometry configuration file 'lidarbatch.txt'" << endl;
+	//		return "";
+	//	}
+	//	return path.string();
+	//}
 
 	std::string toString() const {
 		std::ostringstream oss;
@@ -127,7 +203,6 @@ public:
 
 		proc->m_outputPath = m_outputPath;
 
-		generatePulsesConfiguration(proc);
 	}
 
 	void generatePulsesConfiguration(WaveformProcess *process) {
@@ -143,17 +218,41 @@ public:
 		Float v;
 		Float w;
 
+		//if (m_batchFile == "") {
+		//	fs::path path = m_scene->getSourceFile();
+		//	path = path.parent_path() / "lidarbatch.txt";
+		//	if (!fs::exists(path))
+		//	{	
+		//		cout << "No geometry configuration file" << endl;
+		//	}
+		//	m_batchFile = path.string();
+		//}
+		//else {
+		//	fs::path path = m_scene->getSourceFile();
+		//	path = path.parent_path() / "lidarbatch" / m_batchFile;
+		//	m_batchFile = path.string();
+		//	cout << m_batchFile << endl;
+		//}
+
+		std::string  batchFilePath;
+		cout << "m_batchFile = " << m_batchFile << endl;
 		if (m_batchFile == "") {
 			fs::path path = m_scene->getSourceFile();
 			path = path.parent_path() / "lidarbatch.txt";
 			if (!fs::exists(path))
 			{	
-				cout << "No geometry configuration file 'lidarbatch.txt'" << endl;
+				cout << "no geometry configuration file" << endl;
 			}
-			m_batchFile = path.string();
+			batchFilePath = path.string();
+		}
+		else {
+			fs::path path = m_scene->getSourceFile();
+			path = path.parent_path() / "lidarbatch" / m_batchFile;
+			batchFilePath = path.string();
+			cout << batchFilePath << endl;
 		}
 
-		std::ifstream fin(m_batchFile);
+		std::ifstream fin(batchFilePath);
 		int cnt = 0;
 		while (fin >> x >> y >> z >> u >> v >> w) {
 			process->addGeometryConfiguration(x, y, z, u, v, w);
