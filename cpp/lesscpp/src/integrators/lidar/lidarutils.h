@@ -16,6 +16,7 @@ private:
 	int m_nn;
 };
 extern Float gaussian(Float r, Float sigmaSquare);
+
 MTS_NAMESPACE_END
 
 

@@ -209,7 +209,86 @@ public:
 
 	int generatePulsesConfiguration(WaveformProcess *process) {
 		//generateTestPulsesConfiguration(process);
-		return batchAddPulsesFromFile(process);
+		//return batchAddPulsesFromFile(process);
+		return batchAddPulsesFromFileUsingStringStream(process);
+	}
+
+	int batchAddPulsesFromFileUsingStringStream(WaveformProcess *process) {
+		float x;
+		float y;
+		float z;
+		float u;
+		float v;
+		float w;
+
+		std::string  batchFilePath;
+		cout << "m_batchFile = " << m_batchFile << endl;
+		if (m_batchFile == "") {
+			fs::path path = m_scene->getSourceFile();
+			path = path.parent_path() / "lidarbatch.txt";
+			if (!fs::exists(path))
+			{
+				cout << "no geometry configuration file" << endl;
+			}
+			batchFilePath = path.string();
+		}
+		else {
+			fs::path path = m_scene->getSourceFile();
+			path = path.parent_path() / "lidarbatch" / m_batchFile;
+			batchFilePath = path.string();
+			cout << batchFilePath << endl;
+		}
+
+		HANDLE hFile, hMapFile;
+		LPVOID lpMapAddress;
+		DWORD dFileSize = 0;
+
+		hFile = CreateFile(batchFilePath.c_str(), /* file name */
+			GENERIC_READ | GENERIC_WRITE, /* read/write access */
+			FILE_SHARE_READ | FILE_SHARE_WRITE, /* no sharing of the file */
+			NULL, /* default security */
+			OPEN_ALWAYS, /* open new or existing file */
+			FILE_ATTRIBUTE_NORMAL, /* routine file attributes */
+			NULL); /* no file template */
+
+		hMapFile = CreateFileMapping(hFile, /* file handle */
+			NULL, /* default security */
+			PAGE_READWRITE, /* read/write access to mapped pages */
+			0, /* map entire file */
+			dFileSize,
+			TEXT("SharedObject")); /* named shared memory object */
+
+		if (hFile == INVALID_HANDLE_VALUE)
+		{
+			puts("File handle invalid.");
+		}
+
+		lpMapAddress = MapViewOfFile(hMapFile, /* mapped object handle */
+			FILE_MAP_ALL_ACCESS, /* read/write access */
+			0, /* mapped view of entire file */
+			0,
+			dFileSize);
+
+		if (lpMapAddress == NULL) {
+			puts("Map failed");
+		}
+
+		/* read from shared memory */
+		int cnt = 0;
+		std::stringstream ss((char *)lpMapAddress);
+		while (ss >> x >> y >> z >> u >> v >> w) {
+			process->addGeometryConfiguration(x, y, z, u, v, w);
+			cnt++;
+		}
+		cout << "waveform batchAddPulsesFromFile Number of pulses = " << cnt << endl;
+
+		ss.str("");
+
+		UnmapViewOfFile(lpMapAddress);
+		CloseHandle(hFile);
+		CloseHandle(hMapFile);
+
+		return cnt;
 	}
 
 	int batchAddPulsesFromFile(WaveformProcess *process) {
