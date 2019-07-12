@@ -7,14 +7,14 @@
 using namespace std;
 
 const double PI = acos(-1.0);
-const double eps = 1e-8;
+const double eps = 1e-20;
 
 double add(const double &a, const double &b) {
 	if (abs(a + b) < eps * (abs(a) + abs(b))) return 0;
 	return a + b;
 }
 
-/* from kuangbin */
+/* kuangbin */
 struct Complex {
 	double x, y;
 	Complex(double _x = 0.0, double _y = 0.0) {
@@ -118,7 +118,9 @@ vector<T> conv(const vector<T> &s1, const vector<T> &s2, const std::string &mode
 	vector<T> sum;
 	if (mode == "same") {
 		for (int i = len2 / 2; i < len2 / 2 + len1; i++) {
-			sum.push_back(fabs(x1[i].x < eps) ? 0 : x1[i].x);
+			//sum.push_back(fabs(x1[i].x < eps) ? 0 : x1[i].x);
+			// TODO small -> zero
+			sum.push_back(x1[i].x);
 		}
 		sum.resize(len1);
 	}

@@ -12,4 +12,6 @@ plugins += env.SharedLibrary('myIntegrator', ['myIntegrator.cpp'])
 plugins += env.SharedLibrary('weight', ['weight/weight.cpp'])
 plugins += env.SharedLibrary('waveform', ['lidar/waveform.cpp', 'lidar/lidarsampler.cpp', 'lidar/lidarutils.cpp'])
 
+plugins += env.SharedLibrary('pointcloud', ['lidar/pointCloud/pointcloud.cpp', 'lidar/lidarsampler.cpp', 'lidar/lidarutils.cpp', 'lidar/PulseGaussianFitting.cpp', 'lidar/mpfit.c'])
+#, 'lidar/fftconv1d.cpp'
 Export('plugins')
